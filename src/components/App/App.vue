@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import AuthPage from '@components/Pages/Auth/AuthPage.vue';
+</script>
 
 <template>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <AuthPage/>
 </template>
 
 <style scoped></style>

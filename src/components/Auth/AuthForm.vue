@@ -1,4 +1,23 @@
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+
+onMounted(() => {
+    const user = {
+        identifier: "feralist21@gmail.com",
+        password: "zxc123zxc",
+    };
+
+    fetch("http://localhost:1337/api/auth/local", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+    .then((responce) => responce.json())
+    .then((data) => console.log(data));
+});
+</script>
 
 <template>
     <div class="p-10 shadow-md rounded-md">

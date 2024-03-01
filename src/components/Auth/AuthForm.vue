@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { authUser } from '@/api/authApi';
+import { useRouter } from 'vue-router';
 import { saveToLocalStorage } from '@/helpers/localStorage';
 
 const login = ref('');
 const password = ref('');
+const router = useRouter();
 
 const loginUser = async () => {
     try {
@@ -13,15 +15,17 @@ const loginUser = async () => {
             password: password.value,
         });
 
-        if (response.error.status === 400) {
+        if (response?.error?.status === 400) {
             console.log(response.error);
             return;
         }
 
-        saveToLocalStorage('jwt', response.jwt);
-        
+        saveToLocalStorage('token', response.jwt);
+
         login.value = '';
         password.value = '';
+
+        router.push({ name: 'main' });
     } catch (error) {
         console.log(error);
     }

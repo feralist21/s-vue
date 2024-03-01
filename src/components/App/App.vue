@@ -1,9 +1,7 @@
 <script setup>
-import AuthPage from '@components/Pages/Auth/AuthPage.vue';
 </script>
 
 <template>
-    <AuthPage/>
+    <RouterView />
 </template>
 
-<style scoped></style>

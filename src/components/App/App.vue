@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getFromLocalStorage } from '@/helpers/localStorage';
+import LayoutWrapper from '@components/Layout/LayoutWrapper.vue';
 
 const router = useRouter();
 
@@ -18,6 +19,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <RouterView />
+    <LayoutWrapper/>
     <notifications position="bottom center" />
 </template>

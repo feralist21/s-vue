@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
 import { getArticlesList } from '@/api/articlesApi';
-import HeaderMain from '@/components/Header/HeaderMain.vue';
 
 onMounted(() => {
     getArticlesList()
@@ -13,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <HeaderMain />
+    <div>main page</div>
 </template>
 
 <style scoped></style>

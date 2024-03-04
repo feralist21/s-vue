@@ -19,4 +19,5 @@ onMounted(() => {
 
 <template>
     <RouterView />
+    <notifications position="bottom center" />
 </template>

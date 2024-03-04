@@ -3,12 +3,22 @@ import { ref } from 'vue';
 import { authUser } from '@/api/authApi';
 import { useRouter } from 'vue-router';
 import { saveToLocalStorage } from '@/helpers/localStorage';
+import { notify } from '@kyvg/vue3-notification';
 
 const login = ref('');
 const password = ref('');
 const router = useRouter();
 
 const loginUser = async () => {
+    if (login.value === '' || password.value === '') {
+        notify({
+            type: 'error',
+            title: 'Ошибка',
+            text: 'Заполните все поля!',
+        });
+        return;
+    }
+
     try {
         const response = await authUser({
             identifier: login.value,
@@ -16,7 +26,12 @@ const loginUser = async () => {
         });
 
         if (response?.error?.status === 400) {
-            console.log(response.error);
+            notify({
+                type: 'error',
+                title: response.error.name,
+                text: response.error.message,
+            });
+
             return;
         }
 
@@ -24,7 +39,7 @@ const loginUser = async () => {
 
         login.value = '';
         password.value = '';
-
+        
         router.push({ name: 'main' });
     } catch (error) {
         console.log(error);
